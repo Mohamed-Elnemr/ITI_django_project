@@ -32,8 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'user',
-    'admin',
-    'auth',
+    # 'admin',
+    # 'auth',
     'post',
     'reservation',
     'website',
@@ -84,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lonely_django',
         'USER': 'root',
-        'PASSWORD': 'Os@12345',
+        'PASSWORD': '22121989',
         'HOST': 'localhost',
         'PORT': '3306'
 
