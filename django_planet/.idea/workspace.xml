@@ -15,8 +15,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user/models.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="195">
               <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+=======
+            <state relative-caret-position="60">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+>>>>>>> fc36b3e1a37aba4d4173a7dad096fd860bd7f8eb
             </state>
           </provider>
         </entry>
@@ -42,13 +47,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/django_planet/settings.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="231">
               <caret line="86" column="29" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
+=======
+            <state relative-caret-position="201">
+              <caret line="118" column="17" selection-start-line="118" selection-start-column="17" selection-end-line="118" selection-end-column="17" />
+>>>>>>> fc36b3e1a37aba4d4173a7dad096fd860bd7f8eb
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/manage.py">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -68,6 +79,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
               <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+=======
+        <entry file="file://$PROJECT_DIR$/django_planet/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
+              <folding>
+                <element signature="e#647#679#0" expanded="true" />
+              </folding>
+>>>>>>> fc36b3e1a37aba4d4173a7dad096fd860bd7f8eb
             </state>
           </provider>
         </entry>
@@ -87,6 +107,7 @@
       <list>
         <option value="$PROJECT_DIR$/websie/models.py" />
         <option value="$PROJECT_DIR$/django_planet/settings.py" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/post/models.py" />
         <option value="$PROJECT_DIR$/reservation/models.py" />
         <option value="$PROJECT_DIR$/user/models.py" />
@@ -98,6 +119,17 @@
     <option name="x" value="683" />
     <option name="width" value="687" />
     <option name="height" value="730" />
+=======
+        <option value="$PROJECT_DIR$/django_planet/urls.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="437" />
+    <option name="y" value="27" />
+    <option name="width" value="929" />
+    <option name="height" value="741" />
+>>>>>>> fc36b3e1a37aba4d4173a7dad096fd860bd7f8eb
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -118,6 +150,11 @@
               <item name="django_planet" type="462c0819:PsiDirectoryNode" />
               <item name="website" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="django_planet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="django_planet" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -126,6 +163,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -153,8 +191,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="-4" y="0" width="1374" height="730" extended-state="6" />
     <editor active="true" />
+=======
+    <frame x="437" y="27" width="929" height="741" extended-state="0" />
+>>>>>>> fc36b3e1a37aba4d4173a7dad096fd860bd7f8eb
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16679077" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -184,16 +226,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/websie/models.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="75">
           <caret line="5" column="4" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="22" />
+=======
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+>>>>>>> fc36b3e1a37aba4d4173a7dad096fd860bd7f8eb
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_planet/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
+          <folding>
+            <element signature="e#647#679#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/django_planet/settings.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="231">
           <caret line="86" column="29" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
         </state>
@@ -230,6 +291,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
+=======
+        <state relative-caret-position="201">
+          <caret line="118" column="17" selection-start-line="118" selection-start-column="17" selection-end-line="118" selection-end-column="17" />
+>>>>>>> fc36b3e1a37aba4d4173a7dad096fd860bd7f8eb
         </state>
       </provider>
     </entry>
