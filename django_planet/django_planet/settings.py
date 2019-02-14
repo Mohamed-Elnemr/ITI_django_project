@@ -32,6 +32,11 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'user',
+    'admin',
+    'auth',
+    'post',
+    'reservation',
+    'website',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -82,6 +87,7 @@ DATABASES = {
         'PASSWORD': 'Os@12345',
         'HOST': 'localhost',
         'PORT': '3306'
+
     }
 }
 
