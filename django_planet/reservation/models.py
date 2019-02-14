@@ -1,25 +1,32 @@
 from django.db import models
+from website.models import City,Country
+
 
 # Create your models here.
 
-class Hotels(models.Model):
-    name=models.CharField(max_length=100)
-    description=models.TextField()
-    number_of_rooms=models.IntegerField()
-    price=models.IntegerField()
+class Hotel(models.Model):
+    hotel_id = models.PositiveIntegerField(primary_key=True)
+    hotel_name = models.CharField(max_length = 200 ,null=False)
+    hotel_des = models.CharField(max_length=250)
+    hotel_rank = models.IntegerField()
+    hotel_review = models.CharField(max_length=250)
+    city_id = models.ForeignKey(City)
 
 
+class Car(models.Model):
+    car_id = models.PositiveIntegerField(primary_key=True)
+    car_type = models.CharField(max_length = 200 ,null=False)
+    car_price = models.FloatField(null=False)
+    car_number = models.IntegerField(null=False)
+    country_id = models.ForeignKey(Country)
+
+class Room(models.Model):
+    room_id = models.PositiveIntegerField(primary_key=True)
+    room_price = models.FloatField(null=False)
+    hotel_id = models.ForeignKey(Hotel)
 
 
-class Cars (models.Model):
-    type = models.CharField(max_length=100)
-    price=models.IntegerField()
-
-
-
-
-
-class Locations(models.Model):
-    pass
-
-
+class Location(models.Model):
+    location_id = models.PositiveIntegerField(primary_key=True)
+    location_name = models.CharField(max_length=200, null=False)
+    country_id = models.ForeignKey(Country)
