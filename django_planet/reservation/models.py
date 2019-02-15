@@ -1,7 +1,6 @@
 from django.db import models
 from website.models import City,Country
 
-
 # Create your models here.
 
 class Hotel(models.Model):
@@ -11,7 +10,6 @@ class Hotel(models.Model):
     hotel_rank = models.IntegerField()
     hotel_review = models.CharField(max_length=250)
     city = models.ForeignKey(City)
-
 
 class Car(models.Model):
     car_id = models.PositiveIntegerField(primary_key=True)
@@ -26,12 +24,10 @@ class Room(models.Model):
     num_of_beds = models.IntegerField(null=False)
     hotel = models.ForeignKey(Hotel)
 
-
 class Location(models.Model):
     location_id = models.PositiveIntegerField(primary_key=True)
     location_name = models.CharField(max_length=200, null=False)
     country = models.ForeignKey(Country)
-
 
 class CarStatus(models.Model):
     is_available = models.BooleanField(default=True)
