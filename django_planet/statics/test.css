@@ -1,0 +1,14 @@
+body {
+    display: block;
+    margin: 8px;
+    background: aqua;
+    background-color: linen;
+
+}
+
+.test {
+  width: 300px;
+  height: 100px;
+  padding: 50px;
+  border: 1px solid red;
+}

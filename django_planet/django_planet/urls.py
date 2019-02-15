@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^post/', include('post.urls')),
     url(r'^reservation/', include('reservation.urls')),
     url(r'^website/', include('website.urls')),
+    url(r'^users/', include('user.urls')),
 ]
