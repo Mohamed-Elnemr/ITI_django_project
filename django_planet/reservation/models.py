@@ -33,9 +33,10 @@ class Location(models.Model):
     country = models.ForeignKey(Country)
 
 
-class car_status(models.Model):
-    is_available = models.BooleanField(initial=True)
+class CarStatus(models.Model):
+    is_available = models.BooleanField(default=True)
     date_from = models.DateField(null=False)
     date_to = models.DateField(null=False)
-    loc_from = models.ForeignKey(Location)
-    loc_to = models.ForeignKey(Location)
+    loc_from = models.ForeignKey(Location,related_name='location from+')
+    loc_to = models.ForeignKey(Location,related_name='location to+')
+    car = models.ForeignKey(Car)
