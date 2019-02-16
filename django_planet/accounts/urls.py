@@ -23,7 +23,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     url(r'^login/$', auth_views.login, {'template_name': 'admin/login.html'}),
     url(r'^logout/$', auth_views.logout,{'next_page': '/successfully_logged_out/'}),
-    url(r'profile/$', views.login_success, name='profile')
+    url(r'login_success/$', views.login_success, name='login_success')
 ]
 
 

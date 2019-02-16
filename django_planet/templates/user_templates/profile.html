@@ -12,4 +12,8 @@
 id : {{current_user.id}}
 <br>
 name : {{current_user.username}}
+<br>
+{% if user.is_authenticated %}
+        <p>Welcome {{ user.username }} !!!</p>
+{% endif %}
 </body>
