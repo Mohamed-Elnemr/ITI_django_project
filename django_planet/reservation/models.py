@@ -10,9 +10,9 @@ class Hotel(models.Model):
 
     hotel_id = models.AutoField(primary_key=True)
     hotel_name = models.CharField(max_length = 200 ,null=False)
-    hotel_des = models.CharField(max_length=250)
+    hotel_des = models.TextField(null=True, blank=True,verbose_name='hotel description')
     hotel_rank = models.IntegerField()
-    hotel_review = models.CharField(max_length=250)
+    hotel_review = models.TextField(null=True, blank=True)
     city = models.ForeignKey(City)
 
 class Car(models.Model):

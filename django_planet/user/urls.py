@@ -21,7 +21,8 @@ from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
-url(r'profile/$', views.profile, name='profile')
+url(r'profile/$', views.profile, name='profile'),
+url(r'test/(?P<country_id>[0-9]+)/$', views.test, name='test')
 
 ]
 

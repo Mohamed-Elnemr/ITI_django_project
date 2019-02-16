@@ -3,7 +3,14 @@
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
 <title>{% block title %}{% endblock %}</title>
+
+<link rel="stylesheet" type="text/css" href="{% static 'login/css/bootstrap.min.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'login/css/all.min.css'%}">
+
 <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" />
+    {% load static %}
+
+
 {% block extrastyle %}{% endblock %}
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
 {% block extrahead %}{% endblock %}
@@ -14,42 +21,42 @@
 <body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
   data-admin-utc-offset="{% now "Z" %}">
 
+
+
 <!-- Container -->
 <div id="container">
 
     {% if not is_popup %}
     <!-- Header -->
-    <div id="header">
-        <div id="branding">
-        {% block branding %}{% endblock %}
+    {% if not is_popup %}
+{% if has_permission %}
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color" style="background: #43494c;">
+<a class="navbar-brand" href="{% url 'admin:index' %}">
+    <img src="{% static 'login/imgs/icon-ftm.svg'%}" width="30" height="30" class="d-inline-block align-top" alt="">
+    Dashboard
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+
+      <li class="nav-item dropdown" style="  list-style-type: none;">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <i class="fas fa-user"></i>
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+          <a class="dropdown-item" href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a>
+            <a class="dropdown-item" href="{% url 'admin:logout' %}?next=/accounts/login">{% trans 'Log out ' %}</a>
         </div>
-        {% block usertools %}
-        {% if has_permission %}
-        <div id="user-tools">
-            {% block welcome-msg %}
-                {% trans 'Welcome,' %}
-                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
-            {% endblock %}
-            {% block userlinks %}
-                {% if site_url %}
-                    <a href="{{ site_url }}">{% trans 'View site' %}</a> /
-                {% endif %}
-                {% if user.is_active and user.is_staff %}
-                    {% url 'django-admindocs-docroot' as docsroot %}
-                    {% if docsroot %}
-                        <a href="{{ docsroot }}">{% trans 'Documentation' %}</a> /
-                    {% endif %}
-                {% endif %}
-                {% if user.has_usable_password %}
-                <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /
-                {% endif %}
-                <a href="{% url 'admin:logout' %}?next=/accounts/login">{% trans 'Log out ' %}</a>
-            {% endblock %}
-        </div>
-        {% endif %}
-        {% endblock %}
-        {% block nav-global %}{% endblock %}
-    </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endif %}
+{% endif %}
+
+
     <!-- END Header -->
     {% block breadcrumbs %}
     <div class="breadcrumbs">
@@ -83,6 +90,9 @@
     {% block footer %}<div id="footer"></div>{% endblock %}
 </div>
 <!-- END Container -->
+<script src="{% static 'login/js/jquery.min.js'%}"></script>
+<script src="{% static 'login/js/bootstrap.min.js'%}"></script>
+
 
 </body>
 </html>

@@ -12,7 +12,7 @@ class Country_inline(admin.StackedInline):
 
 class Continents_edit(admin.ModelAdmin):
     fieldsets = (
-        ['Continents info', {'fields':['cont_name']}],
+        ['Continents info', {'fields':['cont_image','cont_name']}],
     )
 
     search_fields = ('cont_name',)
@@ -25,7 +25,7 @@ class Country_edit(admin.ModelAdmin):
     # list_editable = ('cont',)
     list_filter = ('cont',)
     fieldsets = (
-        ['Country info', {'fields':['country_name','country_rank','cont']}],
+        ['Country info', {'fields':['country_image','country_name','country_rank','cont']}],
     )
     search_fields = ('country_name','cont__cont_name')
 
@@ -42,7 +42,7 @@ class City_edit(admin.ModelAdmin):
     # list_editable = ('country',)
     # list_filter = ('country',)
     fieldsets = (
-        ['City info', {'fields':['city_name','city_rank','city_des','city_long','city_lat','country']}],
+        ['City info', {'fields':['city_image','city_name','city_rank','city_des','city_long','city_lat','country']}],
     )
     search_fields = ('city_name','country__country_name')
 
@@ -53,7 +53,7 @@ class Site_edit(admin.ModelAdmin):
     # list_editable = ('city',)
     # list_filter = ('country',)
     fieldsets = (
-        ['Site info', {'fields':['site_name','site_des','site_rank','site_review','city']}],
+        ['Site info', {'fields':['site_image','site_name','site_des','site_rank','site_review','city']}],
     )
     search_fields = ('site_name','city__city_name')
 

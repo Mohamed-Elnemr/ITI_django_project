@@ -1,0 +1,24 @@
+<head>
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'test.css'%}">
+
+
+</head>
+<body class="test">
+
+{% if country %}country name : <div class='imp_message'>{{ country.country_name }}</div>{% endif %}
+
+{% if country %}country  rank: <div class='imp_message'>{{ country.country_rank }}</div>{% endif %}
+
+{% if country %}country image : <img src="/media/{{ country.country_image }}">{% endif %}
+
+{% if country %}cont name : <div class='imp_message'>{{ country.cont.cont_name }}</div>{% endif %}
+
+
+
+<!--{% if user.is_authenticated %}-->
+        <p>Welcome {{ user.username }} !!!</p>
+<!--{% endif %}-->
+</body>
