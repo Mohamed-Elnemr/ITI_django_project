@@ -11,6 +11,7 @@ class Country_inline(admin.StackedInline):
 
 
 class Continents_edit(admin.ModelAdmin):
+    list_display = ('cont_name', 'image_tag')
     fieldsets = (
         ['Continents info', {'fields':['cont_image','cont_name']}],
     )
@@ -37,7 +38,7 @@ class Country_edit(admin.ModelAdmin):
 
 
 class City_edit(admin.ModelAdmin):
-    list_display = ('city_name','country')
+    list_display = ('city_name','country','image_tag')
     list_display_links = ('city_name','country')
     # list_editable = ('country',)
     # list_filter = ('country',)
@@ -48,7 +49,7 @@ class City_edit(admin.ModelAdmin):
 
 
 class Site_edit(admin.ModelAdmin):
-    list_display = ('site_name', 'city')
+    list_display = ('site_name', 'city','image_tag')
     list_display_links = ('site_name','city')
     # list_editable = ('city',)
     # list_filter = ('country',)

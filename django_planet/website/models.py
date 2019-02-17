@@ -3,6 +3,11 @@ from django.db import models
 # Create your models here.
 
 class Continents(models.Model):
+    def image_tag(self):
+        return u'<img src="/media/%s" / style= "width: 50px;height: 50px;">' % self.cont_image
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
+
     # fields definition
     def __str__(self):
         return self.cont_name
@@ -28,6 +33,12 @@ class Country(models.Model):
 
 
 class City(models.Model):
+    def image_tag(self):
+        return u'<img src="/media/%s" / style= "width: 50px;height: 50px;">' % self.city_image
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
+
+
     # fields definition
     def __str__(self):
         return self.city_name
@@ -44,6 +55,12 @@ class City(models.Model):
 
 
 class Site(models.Model):
+
+    def image_tag(self):
+        return u'<img src="/media/%s" / style= "width: 50px;height: 50px;">' % self.site_image
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
+
 
     # fields definition
     def __str__(self):
