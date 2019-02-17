@@ -1,0 +1,16 @@
+<head>
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'test.css'%}">
+
+
+</head>
+<body class="test">
+
+
+
+{% if user.is_authenticated %}
+        <p>Welcome {{ user.username }} !!!</p>
+{% endif %}
+</body>

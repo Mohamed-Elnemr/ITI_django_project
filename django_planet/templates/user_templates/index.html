@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <title>User Page</title>
+        <link rel="icon" type="image/icon" href="{% static 'user_profile_assets/images/tabicon.ico' %}">
+        <link rel="stylesheet" type="text/css" href="">
+        <link href="{% static 'user_profile_assets/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'user_profile_assets/css/bootstrap-theme.min.css' %}" rel="stylesheet">
+        <link href="{% static 'user_profile_assets/css/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,700i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,700,700i|Josefin+Sans:700" rel="stylesheet">
+
+        <!--<link href="{% static 'assets/main.css' %}" rel="stylesheet">-->
+        <link rel="stylesheet"  href="{% static 'user_profile_assets/css/main.css' %}" />
+        <link rel="icon" href="{% static 'user_profile_assets/images/logo.png' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    </head>
+
+    <body>
+        <div id="index">                                           <!-- Index starts here -->
+            <div class="container main">
+                <div class="row home">
+                    <div id = "index_left" class="col-md-6 left">
+                        <img class="img-responsive img-rabbit" src="{% static 'user_profile_assets/images/home.jpg' %}">
+                    </div>
+                    <div id = "index_right" class="col-md-6 text-center right">
+                        <div class="logo">
+                            <img src="{% static 'user_profile_assets/images/logo.png' %}">
+                            <h4>I am rabbit</h4>
+                        </div>
+                        <p class="home-description">
+                            Hi, I am Rabbit, Web developer from michigan, US. I am passionate about design, development and interaction. I really love what I do.
+                        </p>
+                        <div class="btn-group-vertical custom_btn animated slideinright">
+                            <div id="about" class="btn btn-rabbit"> <a href="car_history"> Your Car Reservations </a> </div>
+                            <div id="work" class="btn btn-rabbit"> <a href="hotel_history"> Your Hotel Reservations </a> </div>
+                            <div id="contact" class="btn btn-rabbit"> <a href="edit">Edit Profile </a> </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>                                                      <!-- index ends here -->
+
+    </body>
+</html>

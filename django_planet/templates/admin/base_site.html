@@ -1,0 +1,15 @@
+{% extends "admin/base.html" %}
+
+{% block title %} Lonly Planet {% endblock %}
+
+{% block extrastyle %}
+
+{% endblock %}
+
+{% block branding %}
+<!--<h1 id="site-name"><a href="/accounts/login/">Log In</a></h1>-->
+<!--<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Dashboard') }}</a></h1>-->
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Dashboard</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

@@ -5,7 +5,7 @@ from website.models import City
 # Create your models here.
 
 class Article(models.Model):
-    article_id = models.PositiveIntegerField(primary_key=True)
+    article_id = models.AutoField(primary_key=True)
     article_content = models.CharField(max_length=250,null=False)
     article_rank = models.IntegerField()
     city = models.ForeignKey(City)
@@ -13,7 +13,7 @@ class Article(models.Model):
 
 
 class Comment(models.Model):
-    comment_id = models.PositiveIntegerField(primary_key=True)
+    comment_id = models.AutoField(primary_key=True)
     comment_content = models.CharField(max_length=250, null=False)
     comment_rank = models.IntegerField()
     article_id = models.ForeignKey(Article)
