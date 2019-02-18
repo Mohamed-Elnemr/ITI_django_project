@@ -10,10 +10,13 @@ from .models import Country,City
 
 
 def index(request):
-    return render(request, 'website/index.html')
-#
+    return render(request, 'website_templates/index.html')
+
+
 def top_countries(request):
-   return  Country.objects.order_by('country_rank')[:6]
+    top6=Country.objects.order_by('country_rank')[:6]
+    context={'top6':top6}
+    return render (request,'website_templates/index.html',context)
 
 
 # def increase_country_rank(request,country_id):

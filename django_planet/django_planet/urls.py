@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls')),
     url(r'^post/', include('post.urls')),
     url(r'^reservation/', include('reservation.urls')),
-    url(r'^/', include('website.urls')),
+    url(r'^', include('website.urls')),
     url(r'^user/', include('user.urls')),
 ]
 
