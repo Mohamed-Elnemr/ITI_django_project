@@ -11,7 +11,7 @@ def login_success(request):
     if request.user.is_authenticated():
         if request.user.is_staff:
             # user is an admin
-            return redirect("/admin")
+            return redirect("/admin/")
         else:
             context = {'current_user': current_user}
             #return render(request, 'user_templates/profile.html', context)

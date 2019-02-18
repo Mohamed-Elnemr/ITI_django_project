@@ -1,7 +1,8 @@
 {% load static %}
 
 
-<!DOCTYPE html>
+<!--<!DOCTYPE html>-->
+
 <html lang="en">
   <head>
     <title>Travalers &mdash; Colorlib Website Template</title>
@@ -9,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="{% static 'website/fonts/icomoon/style.css' %}">
     <link rel="stylesheet" href="{% static 'website/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'website/css/magnific-popup.css' %}">
     <link rel="stylesheet" href="{% static 'website/css/jquery-ui.css' %}">
@@ -201,11 +202,11 @@
   <script src="{% static 'website/js/owl.carousel.min.js'%}"></script>
   <script src="{% static 'website/js/jquery.stellar.min.js'%}"></script>
   <script src="{% static 'website/js/jquery.countdown.min.js'%}"></script>
-  <script src="{% static 'website/js/jquery.magnific-popup.min.js '%}"></script>
+  <script src="{% static 'website/js/jquery.magnific-popup.min.js'%}"></script>
   <script src="{% static 'website/js/bootstrap-datepicker.min.js'%}"></script>
   <script src="{% static 'website/js/aos.js' %}"></script>
 
-  <script src="js/main.js"></script>
-
+  <script src="{% static 'website/js/main.js' %}"></script>
+  </div>
   </body>
 </html>
