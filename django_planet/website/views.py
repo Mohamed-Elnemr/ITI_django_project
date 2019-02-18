@@ -12,7 +12,8 @@ from .models import Country,City
 def index(request):
     top6 = Country.objects.order_by('country_rank')[:6]
     city_list = City.objects.all()
-    context = {'top6': top6,'tag_list': city_list}
+    country_list=Country.objects.all()
+    context = {'top6': top6,'tag_list': city_list,'country_list':country_list}
     return render(request, 'website_templates/index.html',context)
 
 
