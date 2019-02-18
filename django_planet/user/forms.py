@@ -6,3 +6,10 @@ class RegistrationForm(forms.ModelForm):
 		model = User
 		fields= ('first_name', 'last_name' ,'username' , 'email', 'password')
 
+
+
+class EditProfileForm(forms.ModelForm):
+	class Meta:
+		model = User
+		fields= ('first_name', 'last_name' ,'username' , 'email', 'password')
+

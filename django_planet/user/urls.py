@@ -24,7 +24,7 @@ urlpatterns = [
 url(r'^$', views.index),
     url(r'^car_history/', views.getCarHistory),
     url(r'^hotel_history/', views.getHotelHistory),
-    url(r'^edit/', views.editProfile),
+    url(r'^edit/(?P<username>[a-zA-Z]+)$', views.editProfile),
     url(r'^registration/', views.register)
 
 ]
