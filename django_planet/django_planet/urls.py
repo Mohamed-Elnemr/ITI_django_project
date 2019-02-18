@@ -17,6 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+import website
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,6 +27,11 @@ urlpatterns = [
     url(r'^reservation/', include('reservation.urls')),
     url(r'^$', include('website.urls')),
     url(r'^user/', include('user.urls')),
+
+
+    url(r'^autocomplete/city/',website.views.autocompleteModel, name='autocomplete'),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+# urlpatterns += url(r'^autocomplete/newuser/$',website.views.autocompleteModel, name='autocomplete'),
