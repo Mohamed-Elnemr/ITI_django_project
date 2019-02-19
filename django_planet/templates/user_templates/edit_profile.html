@@ -20,7 +20,11 @@
                 <div class="signup-content">
                         <form method= "POST" class="signup-form"> {% csrf_token %}
                             <h2 class="form-title">Edit Profile</h2>
+                            <!--<div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">-->
                             {{ edit_form.as_p }}
+						    <!--<span class="focus-input100"></span>-->
+					        <!--</div>-->
+<!---->
                             <button type="Submit" class="form-submit">Save</button>
                         </form>
                 </div>
