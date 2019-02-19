@@ -103,3 +103,8 @@ def get_city(request,city_id):
     city = City.objects.select_related('country').get(city_id=eval(city_id))
     context = {'city': city}
     return render(request, 'website_templates/single_city.html', context)
+
+
+def get_country(request):
+    return render(request, 'website_templates/about.html')
+

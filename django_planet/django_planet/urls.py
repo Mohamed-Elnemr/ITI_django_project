@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^reservation/', include('reservation.urls')),
     url(r'^$', website.views.index),
     url(r'^user/', include('user.urls')),
+    url(r'^about/$',website.views.get_country),
 
 
     url(r'^autocomplete/city/',website.views.autocompleteModel, name='autocomplete'),

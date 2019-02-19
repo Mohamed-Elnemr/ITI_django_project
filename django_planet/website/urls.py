@@ -24,6 +24,8 @@ urlpatterns = [
 
     url(r'^$', views.search),
     url(r'^/city/(?P<city_id>[0-9]+)/$', views.get_city),
+    url(r'^/about/$', views.get_country,name="country"),
+
     # url(r'^search(?[0-9]+)', views.search),
 
 
