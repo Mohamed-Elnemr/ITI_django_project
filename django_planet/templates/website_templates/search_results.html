@@ -1,0 +1,57 @@
+
+
+  {% extends "base.html"%}
+  {% block extra_styles %}
+  {% load static %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'website/css/bootstrap2.min.css'%}">
+  {% endblock %}
+
+   {% load static%}
+    {% block content %}
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center">
+            <h2 class="font-weight-light text-black"> {%if search_results %}{{search_results|length}} results for your search {% else %} NO results for your search {%endif%} </h2>
+            <p class="color-black-opacity-5">{% if search_results %} {% if search_results|length >= 1 %}Choose Your Next Destination {% endif %} {% endif %}</p>
+          </div>
+        </div>
+        <div class="row">
+         {% if search_results %}
+          {% for result in search_results %}
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
+            <a href="/search/city/{{ result.city_id }}" class="unit-1 text-center">
+              <img src="/media/{{ result.city_image }}" alt="Image" class="img-fluid">
+              <div class="unit-1-text">
+                <!--<strong class="text-primary mb-2 d-block">$590</strong>-->
+                <h3 class="unit-1-heading">{{ result.country.country_name }}, {{ result.city_name }}</h3>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+
+          {% endif %}
+
+        </div>
+
+        {% if search_results %}
+          <div >
+              <ul class="pagination">
+                  {% if search_results.has_previous %}
+                      <li><a href="?page={{ search_results.previous_page_number }}">Previous</a></li>
+                  {% endif %}
+                  {% for pg in search_results.paginator.page_range %}
+                      {% if search_results.number == pg %}
+                          <li class="active"><a href="?page={{ pg }}">{{ pg }}</a></li>
+                      {% else %}
+                          <li><a href="?page={{ pg }}">{{ pg }}</a></li>
+                      {% endif %}
+                  {% endfor %}
+                  {% if search_results.has_next %}
+                      <li><a href="?page={{ search_results.next_page_number }}">Next</a></li>
+                  {% endif %}
+              </ul>
+            </div>
+        {% endif %}
+      </div>
+    {% endblock content%}

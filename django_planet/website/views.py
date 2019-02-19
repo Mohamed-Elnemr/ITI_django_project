@@ -4,9 +4,10 @@ from django.shortcuts import render
 import json
 
 from django.http import HttpResponse
-
+from django.shortcuts import redirect
 from django.shortcuts import render
 from .models import Country,City
+from django.core.paginator import Paginator
 
 
 
@@ -16,7 +17,8 @@ from .models import Country,City
 def index(request):
     top6 = Country.objects.order_by('country_rank')[:6]
     city_list = City.objects.all()
-    context = {'top6': top6,'tag_list': city_list}
+    country_list=Country.objects.all()
+    context = {'top6': top6,'tag_list': city_list,'country_list':country_list}
     return render(request, 'website_templates/index.html',context)
 
 
@@ -61,7 +63,7 @@ def display_cities(request):
 def autocompleteModel(request):
 
         q = request.GET.get("term", '').capitalize()
-        results_ar = []
+        results_ar =[]
 
         if q:
             results = City.objects.filter(city_name__icontains=q)
@@ -84,4 +86,20 @@ def autocompleteModel(request):
 
 def search(request):
     query = request.GET.get('city')
-    print(query)
+    page = int(request.GET.get('page', '1'))
+    if query:
+        results = City.objects.select_related('country').filter(city_name__icontains=query)
+    else:
+        results = City.objects.select_related('country').all()
+
+    paginator = Paginator(results, 1)
+    r = paginator.page(page);
+    context = {'search_results': r}
+
+    return render(request, 'website_templates/search_results.html', context)
+
+
+def get_city(request,city_id):
+    city = City.objects.select_related('country').get(city_id=eval(city_id))
+    context = {'city': city}
+    return render(request, 'website_templates/single_city.html', context)

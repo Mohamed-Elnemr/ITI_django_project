@@ -30,6 +30,7 @@
 
     <link rel="stylesheet" href="{% static 'website/css/custom_search.css' %}">
 
+    {% block extra_styles %}{% endblock %}
   </head>
   <body>
 
@@ -52,44 +53,53 @@
           <div class="col-6 col-xl-2">
             <h1 class="mb-0"><a href="/" class="text-black h2 mb-0">Travelers</a></h1>
           </div>
-          <div class="col-10 col-md-8 d-none d-xl-block">
+          <div class="col-10 col-md-7 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right text-lg-center" role="navigation">
 
               <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
                 <li class="active">
-                  <a href="index.html">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li class="has-children">
                   <a href="destination.html">Destinations</a>
+
                   <ul class="dropdown">
-                    <li><a href="#">Japan</a></li>
-                    <li><a href="#">Europe</a></li>
-                    <li><a href="#">China</a></li>
-                    <li><a href="#">France</a></li>
+                  {% for country in country_list %}
+
+                    <li><a href="#">{{ country.country_name}}</a></li>
+                 {% endfor %}
+
                   </ul>
                 </li>
             {% if user.is_authenticated %}
 
                 <li><a href="book">Booking</a></li>
                 <li><a href="edit">Edit Profile</a></li>
+                <li><a href="logout">Log Out</a></li>
 
-            {% endif %}
-                <li><a href="accounts/login">Login</a></li>
-                <li><a href="register">Register</a></li>
+            {% else %}
+                <li><a href="/accounts/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
                 <li><a href="blog.html">Blog</a></li>
 
                 <li><a href="contact.html">Contact</a></li>
+            {% endif %}
+
                 <!-- <li><a href="booking.html">Book Online</a></li> -->
               </ul>
             </nav>
           </div>
 
-          <div class="col-6 col-xl-2 text-right">
+          <div class="col-6 col-xl-3 text-right">
             <!---->
-                        <form id=”search” method=”GET” action="search">
-                             <input name="city"class="form-control "id="search_field">
-                             <button type=”submit” class=”btn btn-default btn-submit”>search</button>
-                        </form>
+
+            <form id="search_form" autocomplete="off" method=”GET” action="/search" >
+              <div class="autocomplete" style="float: left;width: 68%;">
+                <input id="search_field" type="text" placeholder="City "name="city"class="form-control">
+              </div>
+              <input type="submit" style="float: left; height: 43px;" value="Search">
+            </form>
+
           <!---->
           </div>
 
@@ -207,12 +217,40 @@
           source: "/autocomplete/city/",
           minLength: 1,
           select: function (event,ui){
-            console.log(ui.item.value);
-            console.log(ui.item.id);
-
+            $('#search_form').submit();
         }
         });
+
         });
+
+
+
+
+  <!--$("#search_field").autocomplete({-->
+
+  <!--source: function(request, response) {-->
+    <!--$.ajax({-->
+      <!--url: '/autocomplete/city/',-->
+      <!--type: 'POST',-->
+      <!--contentType: 'application/json',-->
+      <!--dataType: "json",-->
+      <!--data: {-->
+           <!--csrfmiddlewaretoken: "{{ csrf_token }}",-->
+      <!--},-->
+      <!--success: function(data) {-->
+        <!--if (data.success) {-->
+
+          <!--&lt;!&ndash;response($.map(data.data, function(item) {&ndash;&gt;-->
+
+            <!--&lt;!&ndash;&ndash;&gt;-->
+          <!--&lt;!&ndash;}));&ndash;&gt;-->
+          <!--console.log(data);-->
+        <!--}-->
+      <!--}-->
+    <!--});-->
+  <!--},-->
+  <!--minLength: 1-->
+<!--});-->
     </script>
   </div>
   </body>

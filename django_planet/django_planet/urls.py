@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-import website
+import website.views
 
 
 urlpatterns = [
@@ -25,11 +25,12 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls')),
     url(r'^post/', include('post.urls')),
     url(r'^reservation/', include('reservation.urls')),
-    url(r'^$', include('website.urls')),
+    url(r'^$', website.views.index),
     url(r'^user/', include('user.urls')),
 
 
     url(r'^autocomplete/city/',website.views.autocompleteModel, name='autocomplete'),
+    url(r'^search', include('website.urls')),
 
 ]
 

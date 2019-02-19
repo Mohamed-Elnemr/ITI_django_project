@@ -1,0 +1,24 @@
+
+
+  {% extends "base.html"%}
+  {% block extra_styles %}
+
+  {% endblock %}
+
+   {% load static%}
+    {% block content %}
+
+        {% if city %}
+
+        {{ city.country.country_name }}
+        {{ city.city_name }}
+        {{ city.city_des }}
+        {{ city.city_long }}
+        {{ city.city_lat }}
+        {{ city.city_lat }}
+        /media/{{ city.city_image }}
+
+        {% endif %}
+
+
+    {% endblock content%}

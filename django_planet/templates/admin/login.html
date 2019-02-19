@@ -1,25 +1,19 @@
-{% extends "admin/base_site.html" %}
+{% extends "base.html"%}
+
+
 {% load i18n static %}
 
-{% block extrastyle %}{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}" />
+
+{% block extra_styles %}
+<!--<link rel="stylesheet" type="text/css" href="{% static 'admin/css/login.css' %}" />-->
 
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'login/css/bootstrap.min.css'%}">
+<!--<link rel="stylesheet" type="text/css" href="{% static 'login/css/bootstrap.min.css'%}">-->
 <link rel="stylesheet" type="text/css" href="{% static 'login/css/login.css'%}">
 <style>
 
-html {
-  background-color: #575858;
-}
 
-  body.login {
-    background: #575858;
-}
 
-<!--.login #container {-->
-    <!--height: 510px;-->
-    <!--}-->
 #icon {
     width: 30%;
     margin: 0 34%;
@@ -28,23 +22,37 @@ html {
 {
       background: white;
 }
+
+#id_password
+{
+background-color: #f6f6f6;
+    border: none;
+    color: #0d0d0d;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    width: 85%;
+    border: 2px solid #f6f6f6;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+}
 </style>
 
-{{ form.media }}
 {% endblock %}
 
-{% block bodyclass %}{{ block.super }} login{% endblock %}
+{{ form.media }}
 
-{% block usertools %}{% endblock %}
-
-{% block nav-global %}{% endblock %}
-
-{% block content_title %}{% endblock %}
-
-{% block breadcrumbs %}{% endblock %}
 
 {% block content %}
-<div class="wrapper fadeInDown">
+<div class="wrapper fadeInDown" style="background : white !important;">
 {% if form.errors and not form.non_field_errors %}
 <p class="errornote">
 {% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
@@ -105,3 +113,4 @@ html {
 
 
 {% endblock %}
+
