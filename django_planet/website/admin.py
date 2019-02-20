@@ -49,7 +49,7 @@ class City_edit(admin.ModelAdmin):
 
 
 class Site_edit(admin.ModelAdmin):
-    list_display = ('site_name', 'city','image_tag')
+    list_display = ('site_name', 'city','image_tag','site_rank')
     list_display_links = ('site_name','city')
     # list_editable = ('city',)
     # list_filter = ('country',)

@@ -1,24 +1,373 @@
+       {% extends "base.html"%}
 
 
-  {% extends "base.html"%}
-  {% block extra_styles %}
+{% load static%}
+{% block content %}
 
-  {% endblock %}
+<!DOCTYPE html>
+	<html lang="zxx" class="no-js">
+	<head>
+        {% block extra_styles %}
+		<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="img/fav.png">
+		<!-- Author Meta -->
+		<meta name="author" content="colorlib">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+		<!-- Site Title -->
+		<title>Travel</title>
 
-   {% load static%}
-    {% block content %}
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+			<!--
+			CSS
+			============================================= -->
+			<link rel="stylesheet" href="{% static 'website/country/css/linearicons.css' %}">
+			<link rel="stylesheet" href="{% static 'website/country/css/font-awesome.min.css'%}">
+			<link rel="stylesheet" href="{% static 'website/country/css/bootstrap.css'%}">
+			<link rel="stylesheet" href="{% static 'website/country/css/magnific-popup.css'%}">
+			<link rel="stylesheet" href="{% static 'website/country/css/jquery-ui.css'%}">
+			<link rel="stylesheet" href="{% static 'website/country/css/nice-select.css'%}">
+			<link rel="stylesheet" href="{% static 'website/country/css/animate.min.css'%}">
+			<link rel="stylesheet" href="{% static 'website/country/css/owl.carousel.css'%}">
+			<link rel="stylesheet" href="{% static 'website/country/css/main.css'%}">
 
-        {% if city %}
+        <style>
+            @media (min-width: 768px) {
+  /* show 3 items */
+  .carousel-inner .active,
+  .carousel-inner .active + .carousel-item,
+  .carousel-inner .active + .carousel-item + .carousel-item {
+    display: block;
+  }
 
-        {{ city.country.country_name }}
-        {{ city.city_name }}
-        {{ city.city_des }}
+  .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+  .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
+  .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+    transition: none;
+  }
+
+  .carousel-inner .carousel-item-next,
+  .carousel-inner .carousel-item-prev {
+    position: relative;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .carousel-inner .active.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+    position: absolute;
+    top: 0;
+    right: -33.3333%;
+    z-index: -1;
+    display: block;
+    visibility: visible;
+  }
+
+  /* left or forward direction */
+  .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+  .carousel-item-next.carousel-item-left + .carousel-item,
+  .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
+  .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+    position: relative;
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  /* farthest right hidden item must be abso position for animations */
+  .carousel-inner .carousel-item-prev.carousel-item-right {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    display: block;
+    visibility: visible;
+  }
+
+  /* right or prev direction */
+  .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+  .carousel-item-prev.carousel-item-right + .carousel-item,
+  .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
+  .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+    position: relative;
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+    display: block;
+    visibility: visible;
+  }
+}
+
+        </style>
+        {% endblock %}
+		</head>
+		<body>
+
+
+
+
         {{ city.city_long }}
         {{ city.city_lat }}
         {{ city.city_lat }}
-        /media/{{ city.city_image }}
-
-        {% endif %}
 
 
-    {% endblock content%}
+
+			<!-- start banner Area -->
+			<section class="about-banner relative" style="background: url(/media/{{ city.city_image }});">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								{{ city.city_name }} , {{ city.country.country_name }}
+
+							</h1>
+							<!--<p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="about.html"> About Us</a></p>-->
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+
+			<!-- Start about-info Area -->
+			<section class="about-info-area section-gap">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-lg-6 info-left">
+							<img class="img-fluid" src="/media/{{ city.city_image }}" alt="">
+						</div>
+						<div class="col-lg-6 info-right">
+							<!--<h6>About Us</h6>-->
+							<h1>{{ city.city_name }}</h1>
+							<p>
+								{{ city.city_des }}
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+        <!---->
+
+        <div class="container-fluid">
+          <h1 class="text-center mb-3" style=" padding-bottom: 50px;">Top experiences in {{ city.city_name }}</h1>
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner row w-100 mx-auto">
+
+			{% if sites %}
+				{% for site in sites %}
+				{% if forloop.counter <= 1 %}
+                	<a href="/home/site/{{site.site_id}}" class="carousel-item col-md-4 active"><div >
+				{% else %}
+					<a href="/home/site/{{site.site_id}}" class="carousel-item col-md-4 "><div >
+				{% endif %}
+                    <div class="card">
+                      <img class="card-img-top img-fluid" src="/media/{{site.site_image}}" alt="Card image cap">
+						<div class="image-card__marker" style="position: absolute;
+							margin-top: 23%;
+							margin-left: 41%;
+							font-size: 39px;
+							color: #3b444f;
+							display: inline-block;
+							background: #d6d5d5;
+							width: 42px;
+							height: 43px;
+							text-align: center;
+							line-height: 2.6rem;">{{ forloop.counter }}</div>
+                      <div class="card-body">
+                        <h4 class="card-title">{{site.site_name}}</h4>
+                        <p class="card-text">{{site.site_des}}</p>
+                        <p class="card-text"><small class="text-muted">{{ city.city_name }}</small></p>
+                      </div>
+                    </div>
+				</div></a>
+				{% endfor %}
+			{% endif %}
+            </div>
+
+			<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
+        </div>
+
+
+			<!-- Start other-issue Area -->
+			<!-- map section -->
+			<section class="other-issue-area section-gap">
+
+			</section>
+
+			<!-- End about-info Area -->
+
+			<!-- Start price Area -->
+			<section class="price-area section-gap">
+				<div class="container">
+		            <div class="row d-flex justify-content-center">
+		                <div class="menu-content pb-70 col-lg-8">
+		                    <div class="title text-center">
+		                        <h1 class="mb-10">Top Hotels In {{city.city_name}}</h1>
+		                    </div>
+		                </div>
+		            </div>
+					<div class="row">
+						{% if top_hotels %}
+							{% for hotel in top_hotels %}
+							<!--<a href="" >-->
+								<div class="col-lg-4">
+									<div class="single-price">
+										<h4>{{hotel.hotel_name}}</h4>
+										<img class="card-img-top img-fluid" src="/media/{{hotel.hotel_image}}" alt="Card image cap">
+
+										<!--<ul class="price-list">-->
+											<!--<li class="d-flex justify-content-between align-items-center">-->
+												<!--<span>New York</span>-->
+												<!--<a href="#" class="price-btn">$1500</a>-->
+											<!--</li>-->
+											<!--<li class="d-flex justify-content-between align-items-center">-->
+												<!--<span>Maldives</span>-->
+												<!--<a href="#" class="price-btn">$1500</a>-->
+											<!--</li>-->
+											<!--<li class="d-flex justify-content-between align-items-center">-->
+												<!--<span>Sri Lanka</span>-->
+												<!--<a href="#" class="price-btn">$1500</a>-->
+											<!--</li>-->
+											<!--<li class="d-flex justify-content-between align-items-center">-->
+												<!--<span>Nepal</span>-->
+												<!--<a href="#" class="price-btn">$1500</a>-->
+											<!--</li>-->
+											<!--<li class="d-flex justify-content-between align-items-center">-->
+												<!--<span>Thiland</span>-->
+												<!--<a href="#" class="price-btn">$1500</a>-->
+											<!--</li>-->
+											<!--<li class="d-flex justify-content-between align-items-center">-->
+												<!--<span>Singapore</span>-->
+												<!--<a href="#" class="price-btn">$1500</a>-->
+											<!--</li>-->
+										<!--</ul>-->
+									</div>
+								</div>
+								<!--</a>-->
+						{% endfor %}
+					{% endif %}
+					</div>
+				</div>
+
+			</section>
+			<!-- End price Area -->
+
+			<!-- End other-issue Area -->
+
+
+			<!-- Start testimonial Area -->
+		    <section class="testimonial-area section-gap">
+		        <div class="container">
+		            <div class="row d-flex justify-content-center">
+		                <div class="menu-content pb-70 col-lg-8">
+		                    <div class="title text-center">
+		                        <h1 class="mb-10">Articles</h1>
+		                        <!--<p>The French Revolution constituted for the conscience of the dominant aristocratic class a fall from </p>-->
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="row">
+		                <div class="active-testimonial">
+		                    {% if articles %}
+							{% for article in articles %}
+
+							<a href="/">
+		                    <div class="single-testimonial item d-flex flex-row">
+		                        <div class="thumb" style="width: 30%;">
+		                            <img class="img-fluid" src="/media/{{ city.city_image }}" alt="">
+		                        </div>
+		                        <div class="desc">
+		                            <p>
+		                                {{article.article_content}}
+		                            </p>
+		                            <h4>{{article.user.username}}</h4>
+	                           		<div class="star">
+										{% load filters %}
+										{% for i in 1|rjust:article.article_rank %}
+										<span class="fa fa-star checked"></span>
+										{% endfor %}
+
+										{% with show=5|subtract:article.article_rank%}
+
+										{% for i in 1|rjust:show %}
+										<span class="fa fa-star"></span>
+										{% endfor %}
+										{% endwith %}
+
+
+									</div>
+		                        </div>
+		                    </div>
+							</a>
+
+							{% endfor %}
+					{% endif %}
+
+		                </div>
+		            </div>
+		        </div>
+		    </section>
+		    <!-- End testimonial Area -->
+
+			<!-- start footer Area -->
+
+			<!-- End footer Area -->
+        {% block extra_scripts %}
+			<script src="{% static 'website/country/js/vendor/jquery-2.2.4.min.js'%}"></script>
+			<script src="{% static 'website/country/js/popper.min.js'%}"></script>
+			<script src="{% static 'website/country/js/vendor/bootstrap.min.js'%}"></script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+ 			<script src="{% static 'website/country/js/jquery-ui.js'%}"></script>
+  			<script src="{% static 'website/country/js/easing.min.js'%}"></script>
+			<script src="{% static 'website/country/js/hoverIntent.js'%} "></script>
+			<script src="{% static 'website/country/js/superfish.min.js'%}"></script>
+			<script src="{% static 'website/country/js/jquery.ajaxchimp.min.js'%}"></script>
+			<script src="{% static 'website/country/js/jquery.magnific-popup.min.js'%}"></script>
+			<script src="{% static 'website/country/js/jquery.nice-select.min.js'%}"></script>
+			<script src="{% static 'website/country/js/owl.carousel.min.js'%}"></script>
+			<script src="{% static 'website/country/js/mail-script.js'%}"></script>
+			<script src="{% static 'website/country/js/main.js'%}"></script>
+			<script>
+				$(document).ready(function() {
+				  $("#myCarousel").on("slide.bs.carousel", function(e) {
+					var $e = $(e.relatedTarget);
+					var idx = $e.index();
+					var itemsPerSlide = 3;
+					var totalItems = $(".carousel-item").length;
+
+					if (idx >= totalItems - (itemsPerSlide - 1)) {
+					  var it = itemsPerSlide - (totalItems - idx);
+					  for (var i = 0; i < it; i++) {
+						// append slides to end
+						if (e.direction == "left") {
+						  $(".carousel-item")
+							.eq(i)
+							.appendTo(".carousel-inner");
+						} else {
+						  $(".carousel-item")
+							.eq(0)
+							.appendTo($(this).find(".carousel-inner"));
+						}
+					  }
+					}
+				  });
+				});
+
+			</script>
+        {% endblock %}
+		</body>
+	</html>
+
+     {% endblock content%}

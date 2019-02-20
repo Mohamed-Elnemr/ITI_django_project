@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from website.models import City
 
-# Create your models here.
 
 class Article(models.Model):
     article_id = models.AutoField(primary_key=True)

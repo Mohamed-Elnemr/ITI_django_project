@@ -4,6 +4,12 @@ from website.models import City,Country
 # Create your models here.
 
 class Hotel(models.Model):
+
+    def image_tag(self):
+        return u'<img src="/media/%s" / style= "width: 50px;height: 50px;">' % self.hotel_image
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
+
     # fields definition
     def __str__(self):
         return self.hotel_name
@@ -13,9 +19,16 @@ class Hotel(models.Model):
     hotel_des = models.TextField(null=True, blank=True,verbose_name='hotel description')
     hotel_rank = models.IntegerField()
     hotel_review = models.TextField(null=True, blank=True)
+    hotel_image = models.ImageField(upload_to='hotels_images', blank=True)
     city = models.ForeignKey(City)
 
 class Car(models.Model):
+    def image_tag(self):
+        return u'<img src="/media/%s" / style= "width: 50px;height: 50px;">' % self.car_image
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
+
+
     # fields definition
     def __str__(self):
         return self.car_number
@@ -24,6 +37,7 @@ class Car(models.Model):
     car_type = models.CharField(max_length = 200 ,null=False)
     car_price = models.FloatField(null=False)
     car_number = models.IntegerField(null=False)
+    car_image = models.ImageField(upload_to='cars_images', blank=True)
     country = models.ForeignKey(Country)
 
 class Room(models.Model):

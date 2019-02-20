@@ -6,9 +6,10 @@ import json
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
-from .models import Country,City
+from .models import *
 from django.core.paginator import Paginator
-
+from reservation.models import Hotel
+from post.models import Article
 
 
 # Create your views here.
@@ -101,7 +102,11 @@ def search(request):
 
 def get_city(request,city_id):
     city = City.objects.select_related('country').get(city_id=eval(city_id))
-    context = {'city': city}
+    sites = Site.objects.filter(city=eval(city_id)).order_by('site_rank').reverse()
+    articles = Article.objects.select_related('user').filter(city=eval(city_id)).order_by('article_rank').reverse()
+    top_hotels = Hotel.objects.filter(city=eval(city_id)).order_by('hotel_rank').reverse()[:6]
+
+    context = {'city': city,'sites':sites,'top_hotels':top_hotels,'articles':articles}
     return render(request, 'website_templates/single_city.html', context)
 
 
