@@ -122,7 +122,10 @@
                   <img src="{% static 'website/index/images/img_1.jpg'%}" alt="Image" class="img-md-fluid">
                 </div>
                 <div class="overlap-left col-lg-6 bg-white p-md-5 align-self-center">
-                  <p class="text-black lead">&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique dolorem quisquam laudantium, incidunt id laborum, tempora aliquid labore minus. Nemo maxime, veniam! Fugiat odio nam eveniet ipsam atque, corrupti porro&rdquo;</p>
+                                    {% for article in articles %}
+
+                  <p class="text-black lead">&ldquo;{{article.article_content}}&rdquo;</p>
+                 {% endfor %}
                   <p class="">&mdash; <em>James Martin</em>, <a href="#">Traveler</a></p>
                 </div>
               </div>

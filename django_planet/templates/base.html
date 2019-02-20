@@ -5,7 +5,7 @@
 
 <html lang="en">
   <head>
-    <title>Travalers &mdash; Colorlib Website Template</title>
+    <title>Travalers </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -64,9 +64,9 @@
                   <a href="destination.html">Destinations</a>
 
                   <ul class="dropdown">
-                  {% for country in country_list %}
+                  {% for continent in continents %}
 
-                    <li><a href="#">{{ country.country_name}}</a></li>
+                    <li><a href="#">{{ continent.cont_name}}</a></li>
                  {% endfor %}
 
                   </ul>
@@ -79,10 +79,8 @@
 
             {% else %}
                 <li><a href="/accounts/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="/user/registration/">Register</a></li>
 
-                <li><a href="about">Contact</a></li>
             {% endif %}
 
                 <!-- <li><a href="booking.html">Book Online</a></li> -->

@@ -10,6 +10,7 @@ from .models import *
 from django.core.paginator import Paginator
 from reservation.models import Hotel
 from post.models import Article
+from post.views import get_all_articles
 
 
 # Create your views here.
@@ -19,7 +20,9 @@ def index(request):
     top6 = Country.objects.order_by('country_rank')[:6]
     city_list = City.objects.all()
     country_list=Country.objects.all()
-    context = {'top6': top6,'tag_list': city_list,'country_list':country_list}
+    continent_list=Continents.objects.all()
+    articles=get_all_articles(request)
+    context = {'top6': top6,'tag_list': city_list,'country_list':country_list,'continents':continent_list,'articles':articles}
     return render(request, 'website_templates/index.html',context)
 
 
