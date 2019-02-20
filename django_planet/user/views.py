@@ -1,16 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from user.forms import *
-
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from .models import *
 # Create your views here.
 def index(request):
+
     return render(request, "../templates/user_templates/index.html")
 
 def getCarHistory(request):
-    return render(request, "../templates/user_templates/car_history.html")
+	allCarHistory = CarHistory.objects.filter(user_id=1)
+	context = {'allHistory': allCarHistory}
+	return render(request, "../templates/user_templates/car_history.html",context)
 
 def getHotelHistory(request):
-    return render(request, "../templates/user_templates/hotel_history.html")
+	allHotelHistory = HotelHistory.objects.filter(user_id=1)
+	context = {'allHistory' : allHotelHistory}
+	return render(request, "../templates/user_templates/hotel_history.html", context)
 
 
 def register(request):
@@ -18,9 +25,11 @@ def register(request):
 		form = RegistrationForm(request.POST)
 		if form.is_valid():
 			form.save()
+			username = form.cleaned_data.get('username')
+			raw_password = form.cleaned_data.get('password1')
+			user = authenticate(username=username, password=raw_password)
+			login(request, user)
 			return HttpResponseRedirect("/")
-
-
 	else:
 		form = RegistrationForm()
 		context = {'registration_form': form}

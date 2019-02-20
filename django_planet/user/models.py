@@ -1,9 +1,12 @@
 from django.db import models
-from reservation.models import Hotel,Car,Location
+from reservation.models import Hotel, Car, Location
 from website.models import Country
 from django.contrib.auth.models import User
 
 # Create your models here.
+
+
+
 
 class HotelHistory(models.Model):
     user =  models.ForeignKey(User)
@@ -12,8 +15,10 @@ class HotelHistory(models.Model):
     date_to = models.DateField(null=False)
     num_of_person = models.PositiveIntegerField()
 
+
+
 class CarHistory(models.Model):
-    user =  models.ForeignKey(User)
+    user = models.ForeignKey(User)
     car = models.ForeignKey(Car)
     country_id = models.ForeignKey(Country)
     date_from = models.DateField(null=False)
