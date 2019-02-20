@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 # Create your views here.
 
+
+
+
 def login_success(request):
     """
     Redirects users based on whether they are in the admins group

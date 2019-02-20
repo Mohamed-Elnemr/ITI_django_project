@@ -6,9 +6,11 @@ import json
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
-from .models import Country,City
+from .models import *
 from django.core.paginator import Paginator
-
+from reservation.models import Hotel
+from post.models import Article
+from post.views import get_all_articles
 
 
 # Create your views here.
@@ -18,7 +20,9 @@ def index(request):
     top6 = Country.objects.order_by('country_rank')[:6]
     city_list = City.objects.all()
     country_list=Country.objects.all()
-    context = {'top6': top6,'tag_list': city_list,'country_list':country_list}
+    continent_list=Continents.objects.all()
+    articles=get_all_articles(request)
+    context = {'top6': top6,'tag_list': city_list,'country_list':country_list,'continents':continent_list,'articles':articles}
     return render(request, 'website_templates/index.html',context)
 
 
@@ -101,5 +105,14 @@ def search(request):
 
 def get_city(request,city_id):
     city = City.objects.select_related('country').get(city_id=eval(city_id))
-    context = {'city': city}
+    sites = Site.objects.filter(city=eval(city_id)).order_by('site_rank').reverse()
+    articles = Article.objects.select_related('user').filter(city=eval(city_id)).order_by('article_rank').reverse()
+    top_hotels = Hotel.objects.filter(city=eval(city_id)).order_by('hotel_rank').reverse()[:6]
+
+    context = {'city': city,'sites':sites,'top_hotels':top_hotels,'articles':articles}
     return render(request, 'website_templates/single_city.html', context)
+
+
+def get_country(request):
+    return render(request, 'website_templates/about.html')
+
