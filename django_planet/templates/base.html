@@ -28,6 +28,9 @@
 
     <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
 
+    <link rel="stylesheet" href="{% static 'website/css/custom_search.css' %}">
+
+    {% block extra_styles %}{% endblock %}
   </head>
   <body>
 
@@ -48,9 +51,9 @@
         <div class="row align-items-center">
 
           <div class="col-6 col-xl-2">
-            <h1 class="mb-0"><a href="index.html" class="text-black h2 mb-0">Travelers</a></h1>
+            <h1 class="mb-0"><a href="/" class="text-black h2 mb-0">Travelers</a></h1>
           </div>
-          <div class="col-10 col-md-8 d-none d-xl-block">
+          <div class="col-10 col-md-7 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right text-lg-center" role="navigation">
 
               <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
@@ -75,8 +78,8 @@
                 <li><a href="logout">Log Out</a></li>
 
             {% else %}
-                <li><a href="accounts/login">Login</a></li>
-                <li><a href="register">Register</a></li>
+                <li><a href="/accounts/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
                 <li><a href="blog.html">Blog</a></li>
 
                 <li><a href="contact.html">Contact</a></li>
@@ -87,27 +90,17 @@
             </nav>
           </div>
 
-          <div class="col-6 col-xl-2 text-right">
-            <div class="d-none d-xl-inline-block">
-              <ul class="site-menu js-clone-nav ml-auto list-unstyled d-flex text-right mb-0" data-class="social">
-                <li>
-                  <a href="#" class="pl-0 pr-3 text-black"><span class="icon-tripadvisor"></span></a>
-                </li>
-                <li>
-                  <a href="#" class="pl-3 pr-3 text-black"><span class="icon-twitter"></span></a>
-                </li>
-                <li>
-                  <a href="#" class="pl-3 pr-3 text-black"><span class="icon-facebook"></span></a>
-                </li>
-                <li>
-                  <a href="#" class="pl-3 pr-3 text-black"><span class="icon-instagram"></span></a>
-                </li>
+          <div class="col-6 col-xl-3 text-right">
+            <!---->
 
-              </ul>
-            </div>
+            <form id="search_form" autocomplete="off" method=”GET” action="/search" >
+              <div class="autocomplete" style="float: left;width: 68%;">
+                <input id="search_field" type="text" placeholder="City "name="city"class="form-control">
+              </div>
+              <input type="submit" style="float: left; height: 43px;" value="Search">
+            </form>
 
-            <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
-
+          <!---->
           </div>
 
         </div>
@@ -211,7 +204,54 @@
   <script src="{% static 'website/js/bootstrap-datepicker.min.js'%}"></script>
   <script src="{% static 'website/js/aos.js' %}"></script>
 
+
   <script src="{% static 'website/js/main.js' %}"></script>
+  <script src="{% static 'website/js/jquery-ui2.js'%}"></script>
+
+
+
+
+    <script type="text/javascript">
+        $(function() {
+          $("#search_field").autocomplete({
+          source: "/autocomplete/city/",
+          minLength: 1,
+          select: function (event,ui){
+            $('#search_form').submit();
+        }
+        });
+
+        });
+
+
+
+
+  <!--$("#search_field").autocomplete({-->
+
+  <!--source: function(request, response) {-->
+    <!--$.ajax({-->
+      <!--url: '/autocomplete/city/',-->
+      <!--type: 'POST',-->
+      <!--contentType: 'application/json',-->
+      <!--dataType: "json",-->
+      <!--data: {-->
+           <!--csrfmiddlewaretoken: "{{ csrf_token }}",-->
+      <!--},-->
+      <!--success: function(data) {-->
+        <!--if (data.success) {-->
+
+          <!--&lt;!&ndash;response($.map(data.data, function(item) {&ndash;&gt;-->
+
+            <!--&lt;!&ndash;&ndash;&gt;-->
+          <!--&lt;!&ndash;}));&ndash;&gt;-->
+          <!--console.log(data);-->
+        <!--}-->
+      <!--}-->
+    <!--});-->
+  <!--},-->
+  <!--minLength: 1-->
+<!--});-->
+    </script>
   </div>
   </body>
 </html>

@@ -1,4 +1,9 @@
-{% load static %}
+{% extends "base.html"%}
+
+{% load static%}
+{% block content %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +25,16 @@
                 <div class="signup-content">
                         <form method= "POST" class="signup-form"> {% csrf_token %}
                             <h2 class="form-title">Create account</h2>
-                            {{ register_form.as_p }}
+
+                        <!--<div class="form-group">-->
+                            <!--<input type="text" class="form-input" name="name" id="name" placeholder="Your Name"/>-->
+                            {{ registration_form.as_p}}
+
+                        <!--</div>-->
+
+
+                            <!--{{ registration_form.as_p }}-->
+
                             <button type="Submit" class="form-submit">Save</button>
                         </form>
                 </div>
@@ -28,3 +42,4 @@
         </section>
     </div>
 </body>
+{% endblock content%}

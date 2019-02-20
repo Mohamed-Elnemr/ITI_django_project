@@ -17,14 +17,22 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+import website.views
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^post/', include('post.urls')),
     url(r'^reservation/', include('reservation.urls')),
-    url(r'^$', include('website.urls')),
+    url(r'^$', website.views.index),
     url(r'^user/', include('user.urls')),
+
+
+    url(r'^autocomplete/city/',website.views.autocompleteModel, name='autocomplete'),
+    url(r'^search', include('website.urls')),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+# urlpatterns += url(r'^autocomplete/newuser/$',website.views.autocompleteModel, name='autocomplete'),

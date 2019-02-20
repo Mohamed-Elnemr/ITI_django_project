@@ -23,7 +23,7 @@ def register(request):
 
 	else:
 		form = RegistrationForm()
-		context = {'edit_form': form}
+		context = {'registration_form': form}
 		return render(request, '../templates/user_templates/registration.html', context)
 
 

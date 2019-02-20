@@ -22,8 +22,12 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 
-    url(r'^', views.index),
+    url(r'^$', views.search),
+    url(r'^/city/(?P<city_id>[0-9]+)/$', views.get_city),
+    # url(r'^search(?[0-9]+)', views.search),
+
 
 ]
+
 
 
