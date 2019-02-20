@@ -15,13 +15,11 @@ Including another URLconf
 """
 
 from reservation import views
-from django.conf.urls import  url,include
-from django.contrib import admin
-from django.contrib.auth import views as auth_views
-
+from django.conf.urls import url
 
 urlpatterns = [
-
+    url(r'^reserve_hotel', views.reserve_hotel),
+    url(r'^reserve_car', views.reserve_car)
 ]
 
 
