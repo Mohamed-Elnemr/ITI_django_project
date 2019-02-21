@@ -13,7 +13,7 @@ class Country_inline(admin.StackedInline):
 class Continents_edit(admin.ModelAdmin):
     list_display = ('cont_name', 'image_tag')
     fieldsets = (
-        ['Continents info', {'fields':['cont_image','cont_name']}],
+        ['Continents info', {'fields':['cont_image','cont_name','cont_des']}],
     )
 
     search_fields = ('cont_name',)
@@ -26,7 +26,7 @@ class Country_edit(admin.ModelAdmin):
     # list_editable = ('cont',)
     list_filter = ('cont',)
     fieldsets = (
-        ['Country info', {'fields':['country_image','country_name','country_rank','cont']}],
+        ['Country info', {'fields':['country_image','country_name','country_rank','country_des','country_long','country_lat','cont']}],
     )
     search_fields = ('country_name','cont__cont_name')
 

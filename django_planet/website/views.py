@@ -9,8 +9,8 @@ from django.shortcuts import render
 from .models import *
 from django.core.paginator import Paginator
 from reservation.models import Hotel
-from post.models import Article
-from post.views import get_all_articles
+from post.models import Article,Comment
+from post.views import get_all_articles,get_comments
 
 
 # Create your views here.
@@ -18,11 +18,11 @@ from post.views import get_all_articles
 
 def index(request):
     top6 = Country.objects.order_by('country_rank')[:6]
-    city_list = City.objects.all()
+    city_list = City.objects.all()[:6]
     country_list=Country.objects.all()
     continent_list=Continents.objects.all()
-    articles=get_all_articles(request)
-    context = {'top6': top6,'tag_list': city_list,'country_list':country_list,'continents':continent_list,'articles':articles}
+    articles=get_all_articles(request)[:1]
+    context = {'top6': top6,'top_cities': city_list,'country_list':country_list,'continents':continent_list,'articles':articles}
     return render(request, 'website_templates/index.html',context)
 
 
@@ -91,14 +91,17 @@ def autocompleteModel(request):
 def search(request):
     query = request.GET.get('city')
     page = int(request.GET.get('page', '1'))
+
     if query:
         results = City.objects.select_related('country').filter(city_name__icontains=query)
+        result_count = City.objects.select_related('country').filter(city_name__icontains=query).count()
     else:
         results = City.objects.select_related('country').all()
+        result_count  = City.objects.select_related('country').all().count()
 
     paginator = Paginator(results, 1)
     r = paginator.page(page);
-    context = {'search_results': r}
+    context = {'search_results': r,'result_count':result_count}
 
     return render(request, 'website_templates/search_results.html', context)
 
@@ -108,11 +111,27 @@ def get_city(request,city_id):
     sites = Site.objects.filter(city=eval(city_id)).order_by('site_rank').reverse()
     articles = Article.objects.select_related('user').filter(city=eval(city_id)).order_by('article_rank').reverse()
     top_hotels = Hotel.objects.filter(city=eval(city_id)).order_by('hotel_rank').reverse()[:6]
+    comment=get_comments(request,articles)[:1]
 
-    context = {'city': city,'sites':sites,'top_hotels':top_hotels,'articles':articles}
+    context = {'city': city,'sites':sites,'top_hotels':top_hotels,'articles':articles,'comments':comment}
     return render(request, 'website_templates/single_city.html', context)
 
 
-def get_country(request):
-    return render(request, 'website_templates/about.html')
+def get_continent(request,cont_id):
+
+    continant = Continents.objects.get(cont_id=eval(cont_id))
+
+    top6_countries = Country.objects.filter(cont=eval(cont_id)).order_by('country_rank').reverse()[:6]
+
+    context = {'continant': continant, 'top6_countries': top6_countries}
+    return render(request, 'website_templates/single_continant.html', context)
+
+
+def get_country(request,country_id):
+
+    country = Country.objects.get(country_id=eval(country_id))
+    top6_cities = City.objects.filter(country=eval(country_id)).order_by('city_rank').reverse()[:6]
+
+    context = {'country': country, 'top6_cities': top6_cities}
+    return render(request, 'website_templates/single_country.html', context)
 

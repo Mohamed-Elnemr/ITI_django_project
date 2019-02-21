@@ -70,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'website.context_processors.Continents_processor',
             ],
         },
     },
@@ -86,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lonely_django',
         'USER': 'root',
-        'PASSWORD': 'Os@12345',
+        'PASSWORD': '22121989',
         'HOST': 'localhost',
         'PORT': '3306'
 
@@ -140,7 +141,7 @@ STATICFILES_DIRS = [
 
 # MEDIA file
 
-# MEDIA_URL = '/media/'
-MEDIA_URL = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
+MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
 
 LOGIN_REDIRECT_URL = 'login_success'

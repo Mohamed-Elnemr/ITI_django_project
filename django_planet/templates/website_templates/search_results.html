@@ -12,8 +12,8 @@
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center">
-            <h2 class="font-weight-light text-black"> {%if search_results %}{{search_results|length}} results for your search {% else %} NO results for your search {%endif%} </h2>
-            <p class="color-black-opacity-5">{% if search_results %} {% if search_results|length >= 1 %}Choose Your Next Destination {% endif %} {% endif %}</p>
+            <h2 class="font-weight-light text-black"> {%if search_results %}{{result_count}} results for your search {% else %} NO results for your search {%endif%} </h2>
+            <p class="color-black-opacity-5">{% if search_results %} {% if result_count >= 1 %}Choose Your Next Destination {% endif %} {% endif %}</p>
           </div>
         </div>
         <div class="row">

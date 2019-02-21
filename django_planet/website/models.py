@@ -13,6 +13,7 @@ class Continents(models.Model):
         return self.cont_name
     cont_id = models.AutoField(primary_key=True)
     cont_name = models.CharField(max_length = 200 ,null=False,verbose_name='Continent Name')
+    cont_des = models.TextField(null=True, blank=True, verbose_name='Continent Description')
     cont_image = models.ImageField(upload_to='conts_images',blank=True,verbose_name='Continent Image')
 
 class Country(models.Model):
@@ -28,7 +29,10 @@ class Country(models.Model):
     country_id = models.AutoField(primary_key=True)
     country_name = models.CharField(max_length = 200 , null=False)
     country_rank = models.IntegerField()
+    country_des = models.TextField(null=True, blank=True, verbose_name='country Description')
     country_image = models.ImageField(upload_to='countries_images',blank=True)
+    country_long = models.FloatField(null=False, verbose_name='country Longitude')
+    country_lat = models.FloatField(null=False, verbose_name='country Latitude')
     cont = models.ForeignKey(Continents,verbose_name='Continent Name')
 
 

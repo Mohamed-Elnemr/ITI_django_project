@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700">
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700">-->
     <link rel="stylesheet" href="{% static 'website/index/fonts/icomoon/style.css' %}">
     <link rel="stylesheet" href="{% static 'website/index/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'website/index/css/magnific-popup.css' %}">
@@ -61,12 +61,12 @@
                   <a href="/">Home</a>
                 </li>
                 <li class="has-children">
-                  <a href="destination.html">Destinations</a>
+                  <a href="#">Destinations</a>
 
                   <ul class="dropdown">
-                  {% for continent in continents %}
+                  {% for continent in continent_list %}
 
-                    <li><a href="#">{{ continent.cont_name}}</a></li>
+                    <li><a href="/search/continent/{{continent.cont_id}}">{{ continent.cont_name}}</a></li>
                  {% endfor %}
 
                   </ul>
@@ -250,6 +250,8 @@
   <!--minLength: 1-->
 <!--});-->
     </script>
+
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA&callback=initMap"></script>-->
 
     {% block extra_scripts %}{% endblock %}
   </div>

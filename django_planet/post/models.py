@@ -10,6 +10,7 @@ class Article(models.Model):
     article_rank = models.IntegerField()
     city = models.ForeignKey(City)
     user = models.ForeignKey(User)
+    article_pic = models.ImageField(upload_to='articles-images', default='articles-images/default.jpg')
 
     def __str__(self):
         return self.article_title

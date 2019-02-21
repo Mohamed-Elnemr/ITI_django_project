@@ -10,3 +10,8 @@ def get_all_articles(request):
     }
     # return render(request, 'website_templates/index.html',context)
     return article
+
+def get_comments(request,requested):
+    for article in requested:
+        comment=Comment.objects.filter(article_id=article.article_id)
+        return comment

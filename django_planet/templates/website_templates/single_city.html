@@ -10,8 +10,6 @@
         {% block extra_styles %}
 		<!-- Mobile Specific Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<!-- Favicon-->
-		<link rel="shortcut icon" href="img/fav.png">
 		<!-- Author Meta -->
 		<meta name="author" content="colorlib">
 		<!-- Meta Description -->
@@ -36,6 +34,8 @@
 			<link rel="stylesheet" href="{% static 'website/country/css/animate.min.css'%}">
 			<link rel="stylesheet" href="{% static 'website/country/css/owl.carousel.css'%}">
 			<link rel="stylesheet" href="{% static 'website/country/css/main.css'%}">
+
+		<link rel="stylesheet" href="{% static 'jssdk-4.46.3-distribution-vector/map.css'%}">
 
         <style>
             @media (min-width: 768px) {
@@ -100,18 +100,14 @@
   }
 }
 
+#map {
+        height: 100%;
+      }
+
         </style>
         {% endblock %}
 		</head>
 		<body>
-
-
-
-
-        {{ city.city_long }}
-        {{ city.city_lat }}
-        {{ city.city_lat }}
-
 
 
 			<!-- start banner Area -->
@@ -204,6 +200,15 @@
 			<!-- map section -->
 			<section class="other-issue-area section-gap">
 
+
+				<div id="map"></div>
+				<position hidden>
+
+					<lon id="lon">{{ city.city_long }}</lon>
+
+					<lat id="lat">{{ city.city_lat }}</lat>
+
+				</position>
 			</section>
 
 			<!-- End about-info Area -->
@@ -292,7 +297,7 @@
 		                            <p>
 		                                {{article.article_content}}
 		                            </p>
-		                            <h4>{{article.user.username}}</h4>
+		                            <h4>{{article.username}}</h4>
 	                           		<div class="star">
 										{% load filters %}
 										{% for i in 1|rjust:article.article_rank %}
@@ -302,12 +307,18 @@
 										{% with show=5|subtract:article.article_rank%}
 
 										{% for i in 1|rjust:show %}
-										<span class="fa fa-star"></span>
+										<span class="fa fa-star" style=" color: #929292;"></span>
+
 										{% endfor %}
+
 										{% endwith %}
 
 
+
 									</div>
+									{% for comment in comments %}
+												<span class="fa  checked">{{ comment.comment_content }}</span>
+										{% endfor %}
 		                        </div>
 		                    </div>
 							</a>
@@ -328,7 +339,7 @@
 			<script src="{% static 'website/country/js/vendor/jquery-2.2.4.min.js'%}"></script>
 			<script src="{% static 'website/country/js/popper.min.js'%}"></script>
 			<script src="{% static 'website/country/js/vendor/bootstrap.min.js'%}"></script>
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+
  			<script src="{% static 'website/country/js/jquery-ui.js'%}"></script>
   			<script src="{% static 'website/country/js/easing.min.js'%}"></script>
 			<script src="{% static 'website/country/js/hoverIntent.js'%} "></script>
@@ -364,6 +375,32 @@
 					}
 				  });
 				});
+
+			</script>
+
+			<script src="{% static 'jssdk-4.46.3-distribution-vector/tomtom.min.js'%}"></script>
+			<script>
+
+				// Define your product name and version
+					tomtom.setProductInfo('travelo', 'v2');
+
+					var lon = $("#lon").text();
+					var lat = $("#lat").text();
+					console.log(lon);
+					console.log(lat);
+
+					var pos = [lon,lat];
+
+					var map = tomtom.L.map('map', {
+						key: 'EI9Sznbd9I2Tk4zKGlgbOaNcRImT6oFD',
+						basePath: '{% static 'jssdk-4.46.3-distribution-vector'%}',
+						source: 'vector',
+						center: pos,
+						zoom: 10
+
+						});
+					var marker = tomtom.L.marker(pos).addTo(map);
+
 
 			</script>
         {% endblock %}
