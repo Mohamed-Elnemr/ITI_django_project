@@ -12,12 +12,12 @@ def index(request):
 def getCarHistory(request):
 	allCarHistory = CarHistory.objects.filter(user_id=1)
 	context = {'allHistory': allCarHistory}
-	return render(request, "../templates/user_templates/car_history.html",context)
+	return render(request, "user_templates/car_history.html",context)
 
-def getHotelHistory(request):
-	allHotelHistory = HotelHistory.objects.filter(user_id=1)
+def getHotelHistory(request,hotel_id):
+	allHotelHistory = HotelHistory.objects.select_related('hotel').filter(user_id=eval(hotel_id))
 	context = {'allHistory' : allHotelHistory}
-	return render(request, "../templates/user_templates/hotel_history.html", context)
+	return render(request, "user_templates/hotel_history.html", context)
 
 
 def register(request):

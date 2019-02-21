@@ -86,8 +86,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lonely_django',
-        'USER': 'root',
-        'PASSWORD': '22121989',
+        'USER': 'phpmyadmin',
+        'PASSWORD': '123456',
         'HOST': 'localhost',
         'PORT': '3306'
 
