@@ -19,7 +19,7 @@ def login_success(request):
         else:
             context = {'current_user': current_user}
             #return render(request, 'user_templates/profile.html', context)
-            return redirect("/users/profile")
+            return redirect("/user/profile")
             # return redirect("/users/profile/"+current_user.id)
     else:
         return redirect("/accounts/login")

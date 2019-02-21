@@ -18,8 +18,8 @@ from reservation import views
 from django.conf.urls import url
 
 urlpatterns = [
-    url(r'^reserve_hotel', views.reserve_hotel),
-    url(r'^reserve_car', views.reserve_car)
+    url(r'^reserve_hotel/', views.reserve_hotel),
+    url(r'^reserve_car/', views.reserve_car)
 ]
 
 

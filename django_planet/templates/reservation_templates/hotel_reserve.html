@@ -25,47 +25,47 @@
         </div>
         <div class="container">
             <form id="booking-form" class="booking-form" method="POST">
-                <div class="form-group">
-                    <div class="form-destination">
-                        <label for="destination">Cities</label>
-                        {% for c in allCities %}
-                        <select id="destination" required>
-                            <option value="{{c.city_id}}"> {{c.city_name}} </option>
-                        </select>
-                        <!--<input list="destination" id="destination" name="destination" placeholder="City" />-->
-                        <!--<datalist>-->
-                            <!--<option value="{{city_id}}"> {{c.city_name}} </option>-->
-                        <!--</datalist>-->
-                        {% endfor %}
-                    </div>
-                    <div class="form-destination">
-                        <label for="destination">Cities</label>
-                        {% for h in allHotels %}
-                        <select id="destination2" required>
-                            <option value="{{h.hotel_id}}"> {{c.hotel_name}} </option>
-                        </select>
-                        {% endfor %}
-                    </div>
-                    <div class="form-date-from form-icon">
-                        <label for="date_from">From</label>
-                        <input type="date" id="date_from" class="date_from" placeholder="Pick a date" />
-                        <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
-                    </div>
-                    <div class="form-date-to form-icon">
-                        <label for="date_to">To</label>
-                        <input type="date" id="date_to" class="date_to" placeholder="Pick a date" />
-                        <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
-                    </div>
-                    <div class="form-quantity">
-                        <label for="quantity">No. of Adults</label>
-                        <span class="modify-qty plus" onClick="Tang()"><i class="zmdi zmdi-chevron-up"></i></span>
-                        <input type="number" name="quantity" id="quantity" value="0" min="0" class="nput-text qty text">
-                        <span class="modify-qty minus" onClick="Giam()"><i class="zmdi zmdi-chevron-down"></i></span>
-                    </div>
+                 {% csrf_token %}
+                    {{ hotel_reservation_form.as_p }}
+
+                <!--<div class="form-group">-->
+                    <!--<div class="form-destination">-->
+                        <!--<label for="destination">Cities</label>-->
+
+                        <!--<select id="destination" required>-->
+                            <!--{% for c in allCities %}-->
+                            <!--<option value="{{c.city_id}}"> {{c.city_name}} </option>-->
+                            <!--{% endfor %}-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="form-destination">-->
+                        <!--<label for="destination">Hotels</label>-->
+                        <!--<select id="destination2" required>-->
+                            <!--{% for h in allHotels %}-->
+                            <!--<option value="{{h.hotel_id}}"> {{h.hotel_name}} </option>-->
+                            <!--{% endfor %}-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="form-date-from form-icon">-->
+                        <!--<label for="date_from">From</label>-->
+                        <!--<input type="date" id="date_from" class="date_from" placeholder="Pick a date" />-->
+                        <!--&lt;!&ndash; <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> &ndash;&gt;-->
+                    <!--</div>-->
+                    <!--<div class="form-date-to form-icon">-->
+                        <!--<label for="date_to">To</label>-->
+                        <!--<input type="date" id="date_to" class="date_to" placeholder="Pick a date" />-->
+                        <!--&lt;!&ndash; <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> &ndash;&gt;-->
+                    <!--</div>-->
+                    <!--<div class="form-quantity">-->
+                        <!--<label for="quantity">No. of Adults</label>-->
+                        <!--<span class="modify-qty plus" onClick="Tang()"><i class="zmdi zmdi-chevron-up"></i></span>-->
+                        <!--<input type="number" name="quantity" id="quantity" value="0" min="0" class="nput-text qty text">-->
+                        <!--<span class="modify-qty minus" onClick="Giam()"><i class="zmdi zmdi-chevron-down"></i></span>-->
+                    <!--</div>-->
                     <div class="form-submit">
                         <input type="submit" id="submit" class="submit" value="Book now" />
                     </div>
-                </div>
+                <!--</div>-->
             </form>
         </div>
     </div>

@@ -25,35 +25,37 @@
         </div>
         <div class="container">
             <form id="booking-form" class="booking-form" method="POST">
-                <div class="form-group">
-                    <div class="form-destination">
-                        <label for="destination">Cities</label>
-                        <!--<input type="text" id="destination" name="destination" placeholder="EG. HAWAII" />-->
-                        {% for c in allCities %}
-                        <select id="destination" required>
-                            <option value="{{c.city_id}}"> {{c.city_name}} </option>
-                        </select>
-                        {% endfor %}
-                    </div>
-                    <div class="form-date-from form-icon">
-                        <label for="date_from">From</label>
-                        <input type="date" id="date_from" class="date_from" placeholder="Pick a date" />
-                        <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
-                    </div>
-                    <div class="form-date-to form-icon">
-                        <label for="date_to">To</label>
-                        <input type="date" id="date_to" class="date_to" placeholder="Pick a date" />
-                        <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
-                    </div>
-                    <div class="form-date-from form-icon">
-                        <label for="loc_from">Pick-up From</label>
-                        <!--<input type="text" id="loc_from" class="date_from"/>-->
-                        {% for loc in allLocations %}
-                        <select id="loc_from" required>
-                            <option value="{{loc.location_id}}"> {{loc.location_name}} </option>
-                        </select>
-                        {% endfor %}
-                    </div>
+                {% csrf_token %}
+                    {{ car_reservation_form.as_p }}
+                <!--<div class="form-group">-->
+                    <!--<div class="form-destination">-->
+                        <!--<label for="destination">Cities</label>-->
+                        <!--&lt;!&ndash;<input type="text" id="destination" name="destination" placeholder="EG. HAWAII" />&ndash;&gt;-->
+                        <!--{% for c in allCities %}-->
+                        <!--<select id="destination" required>-->
+                            <!--<option value="{{c.city_id}}"> {{c.city_name}} </option>-->
+                        <!--</select>-->
+                        <!--{% endfor %}-->
+                    <!--</div>-->
+                    <!--<div class="form-date-from form-icon">-->
+                        <!--<label for="date_from">From</label>-->
+                        <!--<input type="date" id="date_from" class="date_from" placeholder="Pick a date" />-->
+                        <!--&lt;!&ndash; <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> &ndash;&gt;-->
+                    <!--</div>-->
+                    <!--<div class="form-date-to form-icon">-->
+                        <!--<label for="date_to">To</label>-->
+                        <!--<input type="date" id="date_to" class="date_to" placeholder="Pick a date" />-->
+                        <!--&lt;!&ndash; <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> &ndash;&gt;-->
+                    <!--</div>-->
+                    <!--<div class="form-date-from form-icon">-->
+                        <!--<label for="loc_from">Pick-up From</label>-->
+                        <!--&lt;!&ndash;<input type="text" id="loc_from" class="date_from"/>&ndash;&gt;-->
+                        <!--{% for loc in allLocations %}-->
+                        <!--<select id="loc_from" required>-->
+                            <!--<option value="{{loc.location_id}}"> {{loc.location_name}} </option>-->
+                        <!--</select>-->
+                        <!--{% endfor %}-->
+                    <!--</div>-->
                     <!--<div class="form-date-to form-icon">-->
                         <!--<label for="loc_to">Drop-off To</label>-->
                         <!--&lt;!&ndash;<input type="text" id="loc_to" class="date_to"/>&ndash;&gt;-->
@@ -63,19 +65,19 @@
                         <!--</select>-->
                         <!--{% endfor %}-->
                     <!--</div>-->
-                    <div class="form-date-to form-icon">
-                        <label for="loc_to">Available Cars</label>
-                        <!--<input type="text" id="loc_to" class="date_to"/>-->
-                        {% for avail in availCars %}
-                        <select id="loc_to" required>
-                            <option value="{{car_id}}"> {{avail.car_type}} </option>
-                        </select>
-                        {% endfor %}
-                    </div>
+                    <!--<div class="form-date-to form-icon">-->
+                        <!--<label for="loc_to">Available Cars</label>-->
+                        <!--&lt;!&ndash;<input type="text" id="loc_to" class="date_to"/>&ndash;&gt;-->
+                        <!--{% for avail in availCars %}-->
+                        <!--<select id="loc_to" required>-->
+                            <!--<option value="{{car_id}}"> {{avail.car_type}} </option>-->
+                        <!--</select>-->
+                        <!--{% endfor %}-->
+                    <!--</div>-->
                     <div class="form-submit">
                         <input type="submit" id="submit" class="submit" value="Book now" />
                     </div>
-                </div>
+                <!--</div>-->
             </form>
         </div>
     </div>

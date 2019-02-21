@@ -57,6 +57,12 @@
             <nav class="site-navigation position-relative text-right text-lg-center" role="navigation">
 
               <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
+                {% if user.is_authenticated %}
+                <li class="active">
+                  <a href="/user/profile">Profile</a>
+                </li>
+                {% endif %}
+
                 <li class="active">
                   <a href="/">Home</a>
                 </li>
@@ -73,8 +79,19 @@
                 </li>
             {% if user.is_authenticated %}
 
-                <li><a href="book">Booking</a></li>
-                <li><a href="edit">Edit Profile</a></li>
+                <li class="has-children">
+                  <a href="#">Booking</a>
+
+                  <ul class="dropdown">
+
+
+                    <li><a href="/reservation/reserve_hotel">Hotel reservation</a></li>
+                    <li><a href="/reservation/reserve_car">Car reservation</a></li>
+
+
+                  </ul>
+                </li>
+                <li><a href="/user/edit">Edit Profile</a></li>
                 <li><a href="/accounts/logout">Log Out</a></li>
 
             {% else %}

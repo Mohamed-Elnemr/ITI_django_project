@@ -21,10 +21,10 @@ from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
-url(r'^$', views.index),
+url(r'^profile/$', views.index),
     url(r'^car_history/', views.getCarHistory),
-    url(r'^hotel_history/(?P<hotel_id>[0-9]+)/$', views.getHotelHistory),
-    url(r'^edit/(?P<username>[a-zA-Z]+)$', views.editProfile),
+    url(r'^hotel_history/', views.getHotelHistory),
+    url(r'^edit/', views.editProfile),
     url(r'^registration/', views.register)
 
 ]

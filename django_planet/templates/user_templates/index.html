@@ -1,4 +1,9 @@
-{% load static %}
+
+       {% extends "base.html"%}
+
+
+{% load static%}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -33,15 +38,20 @@
                     <div id = "index_right" class="col-md-6 text-center right">
                         <div class="logo">
                             <img src="{% static 'user_profile_assets/images/logo.png' %}">
-                            <h4>I am rabbit</h4>
+                            <h4>{{user.username}}</h4>
                         </div>
                         <p class="home-description">
-                            Hi, I am Rabbit, Web developer from michigan, US. I am passionate about design, development and interaction. I really love what I do.
+                            First Name : {{user.first_name}}
+                            <br>
+                            Last Name : {{user.last_name}}
+                            <br>
+                            Email : {{user.email}}
+                            <br>
                         </p>
                         <div class="btn-group-vertical custom_btn animated slideinright">
-                            <div id="about" class="btn btn-rabbit"> <a href="car_history"> Your Car Reservations </a> </div>
-                            <div id="work" class="btn btn-rabbit"> <a href="hotel_history"> Your Hotel Reservations </a> </div>
-                            <div id="contact" class="btn btn-rabbit"> <a href="edit">Edit Profile </a> </div>
+                            <div id="about" class="btn btn-rabbit"> <a href="/user/car_history"> Your Car Reservations </a> </div>
+                            <div id="work" class="btn btn-rabbit"> <a href="/user/hotel_history"> Your Hotel Reservations </a> </div>
+                            <div id="contact" class="btn btn-rabbit"> <a href="/user/edit">Edit Profile </a> </div>
                         </div>
                     </div>
                 </div>
@@ -52,3 +62,4 @@
 
     </body>
 </html>
+{% endblock content%}

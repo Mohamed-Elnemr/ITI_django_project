@@ -10,12 +10,12 @@ def index(request):
     return render(request, "../templates/user_templates/index.html")
 
 def getCarHistory(request):
-	allCarHistory = CarHistory.objects.filter(user_id=1)
+	allCarHistory = CarHistory.objects.select_related('car').filter(user_id=request.user.id)
 	context = {'allHistory': allCarHistory}
 	return render(request, "user_templates/car_history.html",context)
 
-def getHotelHistory(request,hotel_id):
-	allHotelHistory = HotelHistory.objects.select_related('hotel').filter(user_id=eval(hotel_id))
+def getHotelHistory(request):
+	allHotelHistory = HotelHistory.objects.select_related('hotel').filter(user_id=request.user.id)
 	context = {'allHistory' : allHotelHistory}
 	return render(request, "user_templates/hotel_history.html", context)
 
@@ -33,21 +33,21 @@ def register(request):
 	else:
 		form = RegistrationForm()
 		context = {'registration_form': form}
-		return render(request, '../templates/user_templates/registration.html', context)
+		return render(request, 'user_templates/registration.html', context)
 
 
 
-def editProfile(request, username):
-	user = User.objects.get(username = username)
+def editProfile(request):
+	# user = User.objects.get(username = username)
 	if request.method == 'POST':
-		form = EditProfileForm(request.POST, instance= user)
+		form = EditProfileForm(request.POST, instance= request.user)
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect("/")
 
 
 	else:
-		form = EditProfileForm(instance = user)
+		form = EditProfileForm(instance = request.user)
 		context = {'edit_form': form}
 		return render(request, "../templates/user_templates/edit_profile.html",context)
 
