@@ -30,6 +30,8 @@ def register(request):
 			user = authenticate(username=username, password=raw_password)
 			login(request, user)
 			return HttpResponseRedirect("/")
+		else:
+			return HttpResponseRedirect("/user/registration/")
 	else:
 		form = RegistrationForm()
 		context = {'registration_form': form}
