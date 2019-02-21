@@ -12,6 +12,9 @@ def get_all_articles(request):
     return article
 
 def get_comments(request,requested):
-    for article in requested:
-        comment=Comment.objects.filter(article_id=article.article_id)
-        return comment
+    if(requested):
+        for article in requested:
+            comment=Comment.objects.filter(article_id=article.article_id)
+            return comment
+    else:
+        return ""

@@ -109,8 +109,11 @@ def search(request):
 def get_city(request,city_id):
     city = City.objects.select_related('country').get(city_id=eval(city_id))
     sites = Site.objects.filter(city=eval(city_id)).order_by('site_rank').reverse()
+
     articles = Article.objects.select_related('user').filter(city=eval(city_id)).order_by('article_rank').reverse()
+
     top_hotels = Hotel.objects.filter(city=eval(city_id)).order_by('hotel_rank').reverse()[:6]
+
     comment=get_comments(request,articles)[:1]
 
     context = {'city': city,'sites':sites,'top_hotels':top_hotels,'articles':articles,'comments':comment}
